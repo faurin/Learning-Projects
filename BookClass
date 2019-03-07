@@ -1,0 +1,68 @@
+import random
+
+class Book:
+
+
+
+    def __init__(self, rare = False):
+
+    # Basic information's
+        self.height = int(input("Please tell me how long is the book(Enter a number): ").isdigit())
+        self.width = int(input("Please tell me the width of the book(Enter a number): ").isdigit())
+        self.thick = int(input("Please tell me how many pages does your book have(Enter a number): ").isdigit())
+        self.weight = int(input("Please tell me how much your book does weight(Enter a number): ").isdigit())
+        self.value = random.randint(35, 500)
+        self.colour = input("Please let me know about book colour: ").strip().capitalize()
+        self.cover = input("Please enter title of the book: ").strip().capitalize()
+        self.back = input("Please enter author name: ").strip().capitalize()
+        self.rare = rare
+
+
+        # Storage original input data
+        global value, height, width, thick, colour, weight, cover, back
+        value = self.value
+        height = self.height
+        width = self.width
+        thick = self.thick
+        colour = self.colour
+        weight = self.weight
+        cover = self.cover
+        back = self.back
+
+               
+# Special Conditions for rare books
+        if self.rare == True:
+            self.value = self.value * random.randint(1, 9)
+        return
+
+    
+    # What can happen with a book?        
+    @property
+    def age(self):
+        self.colour = input("What is actual color of the book? ")
+        self.cover = self.cover + "Lowered value"
+        self.back = self.back + "Lowered Value"
+        self.value = self.value - random.randint(100, 300)
+        return
+    
+    @property
+    def restore(self):
+        self.colour = colour
+        self.cover = cover
+        self.back = back
+        self.value = value
+        self.thick = thick
+        self.weight = weight
+        return
+    
+    @property
+    def rip_page(self):
+        self.thick = self.thick - int(input("Please enter how many pages has been ripped from the book (in numbers): "))
+        return
+    
+    @property
+    def drop(self):
+        self.cover = self.cover + "Lowered value"
+        self.back = self.back + "Lowered value"
+        self.value = self.value - random.randint(1, 100)
+        return
